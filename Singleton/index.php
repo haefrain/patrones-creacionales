@@ -1,21 +1,16 @@
 <?php
 
 require 'CacheCustom.php';
-function cachingData($value) {
-    $cache = CacheCustom::getInstance();
-    $cache->set('prueba', $value);
-}
 
-function accessData() {
-    $cache = CacheCustom::getInstance();
-    $prueba = $cache->get('prueba');
-    echo $prueba . "\n";
-}
+$cache = CacheCustom::getInstance();
+$cache2 = CacheCustom::getInstance();
 
-cachingData('valor 1');
+$cache->set('prueba', 'valor 1');
 
-accessData();
+echo $cache2->get('prueba') . "\n";
 
-cachingData('valor 2');
+$cache3 = CacheCustom::getInstance();
 
-accessData();
+echo $cache3->get('prueba');
+
+// $cache4 = new CacheCustom; // Esto da un error siendo el constructor privado
